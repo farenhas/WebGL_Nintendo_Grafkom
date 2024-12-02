@@ -32,5 +32,6 @@ Proyek ini merupakan visualisasi 3D interaktif dari objek Nintendo Switch menggu
 ![Screenshot 2024-12-02 143631](https://github.com/user-attachments/assets/d6e087a0-ab99-4af0-b31e-672acd9fd760)
 
 ### Kilauan Layar Saat Objek Bergerak
+https://github.com/user-attachments/assets/e0109202-dd0b-4ea8-9c68-2260f4228407
 
 
