@@ -5,15 +5,18 @@ const vs = `
 attribute vec4 a_position;
 attribute vec3 a_normal;
 attribute vec4 a_color;
+attribute vec2 a_texcoord;
 
 uniform mat4 u_projection;
 uniform mat4 u_view;
 uniform mat4 u_world;
 uniform vec3 u_viewWorldPosition;
+uniform sampler2D u_texture;
 
 varying vec3 v_normal;
 varying vec3 v_surfaceToView;
 varying vec4 v_color;
+varying vec2 v_texcoord;
 
 void main() {
   vec4 worldPosition = u_world * a_position;
@@ -21,6 +24,7 @@ void main() {
   v_surfaceToView = u_viewWorldPosition - worldPosition.xyz;
   v_normal = mat3(u_world) * a_normal;
   v_color = a_color;
+  v_texcoord = a_texcoord;
 }
 `;
 
@@ -31,6 +35,7 @@ precision highp float;
 varying vec3 v_normal;
 varying vec3 v_surfaceToView;
 varying vec4 v_color;
+varying vec2 v_texcoord;
 
 uniform vec3 diffuse;
 uniform vec3 ambient;
@@ -40,6 +45,8 @@ uniform float shininess;
 uniform float opacity;
 uniform vec3 u_lightDirection;
 uniform vec3 u_ambientLight;
+
+uniform sampler2D u_texture;
 
 void main () {
   vec3 normal = normalize(v_normal);
@@ -52,6 +59,15 @@ void main () {
 
   vec3 effectiveDiffuse = diffuse * v_color.rgb;
   float effectiveOpacity = opacity * v_color.a;
+
+  // Ambil warna dari tekstur
+  vec4 texColor = texture2D(u_texture, v_texcoord);
+
+  // Kombinasikan warna tekstur dengan warna material
+  vec3 color = emissive +
+               ambient * u_ambientLight +
+               effectiveDiffuse * texColor.rgb * fakeLight +
+               specular * pow(specularLight, shininess);
 
   gl_FragColor = vec4(
       emissive +

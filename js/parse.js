@@ -183,6 +183,9 @@ function parseOBJ(text) {
       Ni(parts)       { material.opticalDensity = parseFloat(parts[0]); },
       d(parts)        { material.opacity        = parseFloat(parts[0]); },
       illum(parts)    { material.illum          = parseInt(parts[0]); },
+      map_Kd(unparsedArgs) {
+        material.diffuseMap = unparsedArgs; 
+      },
     };
   
     const keywordRE = /(\w*)(?: )*(.*)/;
