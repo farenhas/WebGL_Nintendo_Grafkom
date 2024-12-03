@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nintendo Switch 3D Model with WebGL</title>
-
-    <!-- Library Three.js dan plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/pmrem/PMREMGenerator.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/FXAAShader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
 
     <link rel="stylesheet" href="style.css">
     <style>
@@ -30,6 +20,10 @@
             width: 100%;
             height: 100%;
         }
+        #canvas {
+            width: 100%;
+            height: 100%;
+        }
         #info-container {
             position: absolute;
             top: 10px;
@@ -39,7 +33,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 100;
-            pointer-events: none; /* Pastikan ini ada */
+            pointer-events: none; 
         }
         #info-container h2, #info-container h3, #info-container p {
             margin: 5px 0;
@@ -47,8 +41,10 @@
     </style>
 </head>
 <body>
-    <!-- Container Rendering -->
-    <div id="canvas-container"></div>
+    <!-- Container untuk Canvas -->
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
 
     <!-- Informasi Identitas -->
     <div id="info-container">
@@ -56,8 +52,10 @@
         <h3>NRP: 5025221031</h3>
         <p>Objek: Nintendo Switch</p>
     </div>
+    
+    <script src="js/webgl-utils.js"></script>
+    <script src="js/m4.js"></script>
+    <script type="module" src="js/main.js"></script>
 
-    <!-- Script Utama -->
-    <script src="app.js"></script>
 </body>
 </html>
