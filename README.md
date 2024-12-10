@@ -5,6 +5,7 @@
 - **Nama**: Faren Haseena  
 - **NRP**: 5025221031  
 - **Objek**: Nintendo Switch
+  
 **Link Deploy** : https://web-gl-nintendo-grafkom-g9u2tmwee-farens-projects.vercel.app/
 
 Proyek ini merupakan visualisasi 3D interaktif dari objek Nintendo Switch menggunakan WebGL dan Three.js. Model mencakup efek dinamis pada layar yang menghasilkan kilauan ketika objek berputar.
